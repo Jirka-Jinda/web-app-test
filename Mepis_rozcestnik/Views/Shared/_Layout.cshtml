@@ -1,48 +1,91 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="TESCO SW a.s.">
     <title>@ViewData["Title"] - Mepis_rozcestnik</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Mepis_rozcestnik.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body onload="init()">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mepis_rozcestnik</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <h1 class="screen-reader-only">Majtekový ekonomický a právní informační systém MEPIS</h1>
+        <img src="images/logo.png" alt="Logo Majtekového ekonomického a právního informačního systému MEPIS">
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+    <aside>
+        <h2>Oznámení</h2>
+        @RenderBody();
+    </aside>
+
+    <main>
+        <div class="card">
+            <div class="inputs">
+                <label for="env">Prostředí</label>
+
+                <select name="env" id="env" tabindex="1">
+                    <option value="test">Test</option>
+                    <option value="production">Produkce</option>
+                    <!-- <option value="dev">Test</option> -->
+                </select>
+
+                <label for="users">Uživatelé</label>
+
+                <select name="users" id="users" tabindex="2">
+                    <option value="uzsvm">ÚZSVM</option>
+                    <option value="tescosw">TESCO SW</option>
+                </select>
+            </div>
+
+            <ul class="links">
+                <li class="link">
+                    <a id="mepis" href="" tabindex="0">MEPIS portál</a>
+                </li>
+                <li class="link">
+                    <a id="integ" href="" tabindex="0">Integrační platforma</a>
+                </li>
+                <li class="link">
+                    <a id="report" href="" tabindex="0">Reporty</a>
+                </li>
+            </ul>
+        </div>
+    </main>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Mepis_rozcestnik - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        <div id="copyright">TESCO SW a.s. © </div>
     </footer>
+
+    <script>
+        document.getElementById('copyright').appendChild(
+            document.createTextNode(new Date().getFullYear())
+        )
+    </script>
+
+    <script>
+        // Změna CSS tříd v kontextu prostředí
+        document.addEventListener("DOMContentLoaded", function (event) {
+            document.getElementById("env").addEventListener('change', function (e) {
+                const element = document.getElementsByTagName("html")
+
+                // Odebrání tříd při změně
+                for (var i = 0; i < element.length; i++) {
+                    element[i].removeAttribute('class');
+                }
+
+                // Změna třídy
+                if (e.target.value === "dev") {
+                    element[0].classList.add("html--dev")
+                }
+                if (e.target.value === "test") {
+                    element[0].classList.add("html--test")
+                }
+            })
+        })
+    </script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -1,18 +1,481 @@
-html {
-  font-size: 14px;
+﻿/*
+    # Variables
+*/
+
+:root {
+    --blue: hsl(196, 100%, 41%);
+    --red: rgb(198, 21, 39);
+    --grey: hsl(199, 100%, 14%);
+    --backdrop-filter: blur(50px) contrast(110%) saturate(150%);
+    --bg: hsla(0, 0%, 100%, 0.7);
+    --radius: 2rem;
+    --text-secondary: hsla(0, 0%, 0%, 0.6);
+    --overlay-dev: hsla(45, 80%, 50%, 0.2);
+    --overlay-test: hsla(10, 81%, 55%, 0.2);
+    --heading-size: 1.5rem;
+    --heading-weight: 800;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    :root[dark] {
+        --grey: hsl(199, 20%, 74%);
+        --bg: hsla(0, 0%, 0%, 0.7);
+        --text-secondary: hsla(0, 0%, 100%, 0.7);
+    }
+
+@media screen and (min-width: 1024px) {
+    :root {
+        --heading-size: 2rem;
+    }
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+    font-named-instance: 'Regular';
+    src: url("../fonts/inter.woff2?v=3.19") format("woff2");
+}
+
+/*
+    # Base
+*/
+
+::selection {
+    background-color: hsl(196, 100%, 41%, 0.3);
+    color: black;
+}
+
+a {
+    color: var(--blue);
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    block-size: 100%;
+    background-color: #CACCD0;
+    background-image: url("../images/budova.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: cover;
+    background-attachment: fixed;
+    box-sizing: border-box;
+    color: var(--grey);
+    position: relative;
+    z-index: 0;
+}
+
+    html[dark] {
+        background-image: url("../images/budova_dark.jpg");
+    }
+
+    html[wireframe] {
+        background-image: url("../images/budova_wireframe.jpg");
+    }
+
+    html::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        transition: background-color 0.5s ease-out;
+    }
+
+    html.html--dev::before {
+        background-color: var(--overlay-dev);
+    }
+
+    html.html--dev .card {
+        border-color: var(--overlay-dev);
+    }
+
+    html.html--test::before {
+        background-color: var(--overlay-test);
+    }
+
+    html.html--test .card {
+        border-color: var(--overlay-test);
+    }
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 body {
-  margin-bottom: 60px;
+    --gap: 2rem;
+    --padding: 2rem;
+    margin: 0;
+    display: grid;
+    min-block-size: 100vh;
+    padding: var(--padding);
+    grid-template-rows: min-content min-content 1fr min-content;
+    gap: var(--gap);
+    align-content: start;
+    grid-template-areas:
+        "header"
+        "messages"
+        "content"
+        "footer";
 }
+
+@media screen and (min-width: 1024px) {
+    body {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: min-content 1fr min-content;
+        grid-template-areas:
+            "header  messages"
+            "content messages"
+            "footer  messages";
+        height: 100%;
+    }
+}
+
+
+/*
+    # Header
+*/
+
+
+header {
+    grid-area: header;
+}
+
+    header img {
+        width: clamp(64px, 30vw, 300px);
+    }
+
+@media screen and (min-width: 720px) {
+    header {
+        flex-direction: row;
+        align-items: center;
+    }
+
+        header img {
+            margin-inline-end: auto;
+        }
+}
+
+/*
+    # Main
+*/
+
+
+main {
+    justify-self: center;
+    align-self: center;
+    grid-area: content;
+}
+
+/* Když chybí nejsou zprávy */
+
+header + main {
+    margin-block-start: calc(var(--gap) * -1);
+}
+
+/*
+    ## Card 
+*/
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    inline-size: fit-content;
+    padding: clamp(1rem, 5vw, 5rem);
+    border-radius: var(--radius);
+    border: 1rem solid transparent;
+    background-color: var(--bg);
+    -webkit-backdrop-filter: var(--backdrop-filter);
+    backdrop-filter: var(--backdrop-filter);
+    transition: border-color 0.5s ease-out;
+}
+
+.error-card {
+    max-inline-size: 60ch;
+}
+
+    .error-card h2 {
+        font-size: var(--heading-size);
+        font-weight: var(--heading-weight);
+        color: var(--grey);
+        margin: 0;
+    }
+
+    .error-card p {
+        font-size: large;
+        line-height: 1.7;
+        margin: 1rem 0 0 0;
+    }
+
+/*
+    ## Inputs 
+*/
+
+.inputs {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: min-content minmax(120px, 1fr);
+    align-items: baseline;
+    gap: 1rem 2rem;
+    margin-block-end: 3rem;
+}
+
+    .inputs select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-size: inherit;
+        margin: 0;
+        padding: 0.25rem 0.5rem;
+        border: none;
+        border-radius: 100px;
+        background-color: hsla(0, 0%, 100%, 0.35);
+        background-image: url("../images/chevron.svg");
+        background-repeat: no-repeat, repeat;
+        background-position: right 4px center;
+        -webkit-backdrop-filter: var(--backdrop-filter);
+        backdrop-filter: var(--backdrop-filter);
+        transition: all 0.15s ease-out;
+    }
+
+        .inputs select:hover,
+        .inputs select:focus-visible {
+            background-color: white;
+        }
+
+/*
+## Links 
+*/
+
+.links {
+    list-style: none;
+    margin-block: 0;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    padding-block: 0.5rem;
+    font-size: var(--heading-size);
+    font-weight: var(--heading-weight);
+    transition: all 0.15s ease-out;
+}
+
+    .link::after {
+        content: "→";
+        display: flex;
+        place-content: center;
+        position: relative;
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        border-radius: 1.5rem;
+        line-height: 1.5rem;
+        top: 0.15rem;
+        margin-inline-start: 0.25rem;
+        font-size: 1rem;
+        color: var(--red);
+        transition: all 0.15s ease-out;
+    }
+
+    .link a {
+        color: var(--grey);
+        text-decoration: none;
+    }
+
+    .link:hover a,
+    .link:focus-visible a {
+        color: var(--red);
+    }
+
+    .link:hover::after,
+    .link:focus-visible::after {
+        transform: translateX(0.25rem);
+        background-color: var(--red);
+        color: white
+    }
+
+/* 
+    # Messages area
+*/
+
+aside {
+    grid-area: messages;
+    background-color: var(--bg);
+    -webkit-backdrop-filter: var(--backdrop-filter);
+    backdrop-filter: var(--backdrop-filter);
+    transition: border-color 0.5s ease-out;
+    inline-size: fit-content;
+    margin-inline: auto;
+    padding: clamp(1rem, 5vw, 2rem);
+    border-radius: var(--radius);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+@media screen and (min-width: 1024px) {
+    aside {
+        margin-block: calc(var(--padding) * -1);
+        margin-inline-end: calc(var(--padding) * -1);
+        border-radius: 0;
+    }
+}
+
+aside h2 {
+    font-size: var(--heading-size);
+    font-weight: var(--heading-weight);
+    color: var(--grey);
+    /* position: sticky;
+    top: 0;
+    z-index: 1; */
+    margin: 0;
+    /* inline-size: fit-content;
+    padding: 0.5rem 1rem;
+    margin: -0.5rem -1rem 1rem -1rem;
+    border-radius: 200px;
+    background-color: transparent;
+    backdrop-filter: blur(200px); */
+}
+
+/* 
+    ## Messages
+*/
+
+article {
+    --article-gap: 0.5rem;
+    --article-padding: 1.5rem;
+    --article-color: var(--blue);
+    --article-stripe-width: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--article-gap);
+    padding-block: var(--article-padding);
+    padding-inline-start: calc(1rem + var(--article-stripe-width));
+    align-content: center;
+    max-inline-size: 45ch;
+    color: var(--grey);
+    line-height: 1.5;
+    position: relative;
+    z-index: 0;
+}
+
+    article.warning-message {
+        --article-color: var(--red);
+    }
+
+    article::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 0;
+        inset-block: var(--article-padding);
+        width: var(--article-stripe-width);
+        border-radius: 100px;
+        background-color: var(--article-color);
+    }
+
+    article > * {
+        margin-block: 0;
+    }
+
+    article h3 {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    article time {
+        font-size: small;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--article-color);
+        letter-spacing: -0.02ch;
+        inline-size: fit-content;
+    }
+
+.article-content > * {
+    margin-block: var(--article-gap)
+}
+
+.article-content > :first-child {
+    margin-block-start: 0;
+}
+
+/* 
+    # Footer
+*/
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    inline-size: fit-content;
+    margin-inline: auto;
+    padding: 2rem;
+    border-radius: var(--radius);
+    background-color: var(--bg);
+    -webkit-backdrop-filter: var(--backdrop-filter);
+    backdrop-filter: var(--backdrop-filter);
+    grid-area: footer;
+}
+
+/* 
+    ## Languages and copyright
+*/
+
+.languages {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+    .languages li a:not(:hover) {
+        text-decoration: none;
+    }
+
+    #copyright,
+    .languages li a {
+        color: var(--text-secondary);
+        font-size: small;
+    }
+
+@media screen and (min-width: 720px) {
+    .languages {
+        flex-direction: row;
+    }
+}
+
+/* 
+    # Misc
+*/
+
+/* Ponechá nadpis stránky jen pro čtečky */
+
+.screen-reader-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.show-more-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: inherit;
+    text-decoration: underline;
+}
+
+    .show-more-btn[aria-expanded="false"] {
+        margin-inline-start: 0.5ch;
+    }
