@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lTqLoQUqi2yPOJMKpTg/C93GlGPQiLofdz81tQu6ZVA=",
+  "Hash": "s5vZwOd4dH6dIiTFPsSo6z4Bztx3f2BHH+bATa3VlJY=",
   "Source": "Mepis_rozcestnik",
   "BasePath": "_content/Mepis_rozcestnik",
   "Mode": "Default",
@@ -219,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\logo_dark.png"
+    },
+    {
+      "Identity": "C:\\Users\\JindaJ\\source\\repos\\Mepis_rozcestnik\\Mepis_rozcestnik\\wwwroot\\js\\minmax.js",
+      "SourceId": "Mepis_rozcestnik",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\JindaJ\\source\\repos\\Mepis_rozcestnik\\Mepis_rozcestnik\\wwwroot\\",
+      "BasePath": "_content/Mepis_rozcestnik",
+      "RelativePath": "js/minmax.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\minmax.js"
     },
     {
       "Identity": "C:\\Users\\JindaJ\\source\\repos\\Mepis_rozcestnik\\Mepis_rozcestnik\\wwwroot\\js\\site.js",

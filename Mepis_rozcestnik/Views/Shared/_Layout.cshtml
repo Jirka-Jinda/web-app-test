@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="TESCO SW a.s.">
     <title>@ViewData["Title"] - Mepis_rozcestnik</title>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/minmax.js" asp-append-version="true"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Mepis_rozcestnik.styles.css" asp-append-version="true" />
 </head>
@@ -47,7 +49,7 @@
                     <a id="integ" href="" tabindex="0">Integrační platforma</a>
                 </li>
                 <li class="link">
-                    <a id="report" href="" tabindex="0">Reporty</a>
+                    <a id="report" href="" tabindex="0" asp-controller="App" asp-action="show_oos">Reporty</a>
                 </li>
             </ul>
         </div>
@@ -58,35 +60,15 @@
     </footer>
 
     <script>
-        document.getElementById('copyright').appendChild(
-            document.createTextNode(new Date().getFullYear())
-        )
+        new ShowMore('.article-content', {
+            config: {
+                type: "text",
+                limit: 200,
+                more: " Číst více",
+                less: " Číst méně"
+            }
+        });
     </script>
 
-    <script>
-        // Změna CSS tříd v kontextu prostředí
-        document.addEventListener("DOMContentLoaded", function (event) {
-            document.getElementById("env").addEventListener('change', function (e) {
-                const element = document.getElementsByTagName("html")
-
-                // Odebrání tříd při změně
-                for (var i = 0; i < element.length; i++) {
-                    element[i].removeAttribute('class');
-                }
-
-                // Změna třídy
-                if (e.target.value === "dev") {
-                    element[0].classList.add("html--dev")
-                }
-                if (e.target.value === "test") {
-                    element[0].classList.add("html--test")
-                }
-            })
-        })
-    </script>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -8,5 +8,10 @@ namespace Mepis_rozcestnik.Controllers
         {
             return View();
         }
+
+        public IActionResult show_oos()
+        {
+            return View("out_of_service_prod");
+        }
     }
 }
