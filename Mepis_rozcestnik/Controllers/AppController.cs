@@ -1,7 +1,6 @@
 ﻿using Mepis_rozcestnik.Models;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace Mepis_rozcestnik.Controllers
 {
     public class AppController : Controller
@@ -14,7 +13,7 @@ namespace Mepis_rozcestnik.Controllers
         public IActionResult determine_url()
         {
             var res = Models.determine_url.determine(Request.Form["env"], Request.Form["usr"], Request.Form["btn"]);
-            if (Models.Check_apps_status.check_status(res))
+            if (Models.Check_apps_status.check_status(res).Result)
             {
                 return Redirect(res);
             }

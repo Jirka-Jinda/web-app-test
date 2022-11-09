@@ -17,7 +17,6 @@ function add_events() {
 }
 
 function determine_url(event) {
-    console.log("klik");
     const env = document.getElementById("env").value;
     const user = document.getElementById("users").value;
     var env_url = "";
