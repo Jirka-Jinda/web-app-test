@@ -4,7 +4,7 @@
     {
         public static bool check_status(string url)
         {
-            return true;
+            return false;
         }
     }
 }

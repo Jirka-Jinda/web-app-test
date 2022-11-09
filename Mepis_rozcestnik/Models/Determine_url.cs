@@ -2,9 +2,9 @@
 {
     public class determine_url
     {
-        public static string determine()
+        public static string determine(string env, string usr, string platf)
         {
-            return "";
+            return "https://google.com";
         }
     }
 }

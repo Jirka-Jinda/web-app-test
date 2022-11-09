@@ -10,17 +10,20 @@ namespace Mepis_rozcestnik.Controllers
         {
             return View();
         }
-
+        
         public IActionResult determine_url()
         {
-            var res = Models.determine_url.determine();
+            var res = Models.determine_url.determine(Request.Form["env"], Request.Form["usr"], Request.Form["btn"]);
             if (Models.Check_apps_status.check_status(res))
             {
                 return Redirect(res);
             }
             else
             {
-                return View("out_of_service_prod");
+                if (Request.Form["env"] == "prod")
+                    return View("out_of_service_prod");
+                else
+                    return View("out_of_service_test");
             }
         }
     }
