@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 
 function init() {
-    add_events();
+    //add_events();
     class_changer();
     footer_upd();
 }

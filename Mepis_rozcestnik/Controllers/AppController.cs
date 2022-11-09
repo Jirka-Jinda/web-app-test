@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Mepis_rozcestnik.Models;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace Mepis_rozcestnik.Controllers
 {
@@ -9,9 +11,17 @@ namespace Mepis_rozcestnik.Controllers
             return View();
         }
 
-        public IActionResult show_oos()
+        public IActionResult determine_url()
         {
-            return View("out_of_service_prod");
+            var res = Models.determine_url.determine();
+            if (Models.Check_apps_status.check_status(res))
+            {
+                return Redirect(res);
+            }
+            else
+            {
+                return View("out_of_service_prod");
+            }
         }
     }
 }

@@ -3,3 +3,51 @@
 *@
 @{
 }
+<!DOCTYPE html>
+<html lang="cs" dark>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="TESCO SW a.s.">
+    <title>MEPIS - odstávka</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="screen-reader-only">Majtekový ekonomický a právní informační systém MEPIS</h1>
+        <img src="images/logo_dark.png" alt="Logo Majtekového ekonomického a právního informačního systému MEPIS">
+    </header>
+
+    <main>
+        <div class="card error-card">
+            <h2>Stránka je mimo provoz</h2>
+            <p>
+                Právě probíhá řádná údržba systému na produkčním prostředí. Všechny aplikace tohoto prostředí budou
+                krátkodobě nedostupné.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <!-- <ul class="languages">
+            <li><a href=""> Česky</a></li>
+            <li><a href=""> Slovenčina</a></li>
+            <li><a href=""> Polski</a></li>
+            <li><a href=""> English</a></li>
+            <li><a href=""> Deutsch</a></li>
+        </ul> -->
+        <div id="copyright">TESCO SW a.s. © </div>
+    </footer>
+
+    <script>
+        document.getElementById('copyright').appendChild(
+            document.createTextNode(new Date().getFullYear())
+        )
+    </script>
+
+</body>
+
+</html>
