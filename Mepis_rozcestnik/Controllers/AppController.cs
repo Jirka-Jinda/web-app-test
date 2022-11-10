@@ -1,4 +1,5 @@
 ﻿using Mepis_rozcestnik.Models;
+using Microsoft.Extensions.Primitives;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mepis_rozcestnik.Controllers
@@ -9,20 +10,30 @@ namespace Mepis_rozcestnik.Controllers
         {
             return View();
         }
-        
-        public IActionResult determine_url()
+
+        public IActionResult process_form()
         {
-            var res = Models.determine_url.determine(Request.Form["env"], Request.Form["usr"], Request.Form["btn"]);
-            if (Models.Check_apps_status.check_status(res).Result)
+            var btn = Request.Form["btn"];
+            if (StringValues.IsNullOrEmpty(btn))
             {
-                return Redirect(res);
+                var env = Request.Form["env"];
+                var collection = announcements_collection.get_announ_by_env(env);
+                return View("Index", collection);
             }
             else
             {
-                if (Request.Form["env"] == "prod")
-                    return View("out_of_service_prod");
+                var res = Models.determine_url.determine(Request.Form["env"], Request.Form["usr"], btn);
+                if (Models.Check_apps_status.check_status(res).Result)
+                {
+                    return Redirect(res);
+                }
                 else
-                    return View("out_of_service_test");
+                {
+                    if (Request.Form["env"] == "prod")
+                        return View("out_of_service_prod");
+                    else
+                        return View("out_of_service_test");
+                }
             }
         }
     }

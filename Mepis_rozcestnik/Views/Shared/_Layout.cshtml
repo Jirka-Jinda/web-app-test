@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +18,7 @@
 <body onload="init()">
     <header>
         <h1 class="screen-reader-only">Majtekový ekonomický a právní informační systém MEPIS</h1>
-        <img src="images/logo.png" alt="Logo Majtekového ekonomického a právního informačního systému MEPIS">
+        <img src="~/images/logo.png" alt="Logo Majtekového ekonomického a právního informačního systému MEPIS">
     </header>
 
     <aside>
@@ -24,11 +28,12 @@
 
     <main>
         <div class="card">
-            <form id="frm" asp-controller="App" asp-action="determine_url">
+            <form id="frm" asp-controller="App" asp-action="process_form">
+                ProductName>
                 <div class="inputs">
                     <label for="env">Prostředí</label>
 
-                    <select name="env" id="env">
+                    <select name="env" id="env" onchange="handle_env_change()">
                         <option value="test">Test</option>
                         <option value="production">Produkce</option>
                         <!-- <option value="dev">Test</option> -->
