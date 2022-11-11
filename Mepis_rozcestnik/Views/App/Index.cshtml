@@ -1,13 +1,14 @@
 ﻿@model Mepis_rozcestnik.Models.announcements_collection
 
+<h2>Oznámení</h2>
 @foreach (announcements an in Model.collection)
 {
     var class_name = "";
     @if (@an.is_warning) 
-        class_name = "waring-message";
+        class_name = "warning-message";
 
     <article class=@class_name>
-        <time datetime=@an.Date>??</time>
+        <time datetime=@an.date>??</time>
         <h3>@an.header</h3>
         <div class="article-content">
             <p>

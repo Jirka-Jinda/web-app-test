@@ -24,4 +24,5 @@ C:\Users\JindaJ\source\repos\Mepis_rozcestnik\Mepis_rozcestnik\obj\Debug\net6.0\
 C:\Users\JindaJ\source\repos\Mepis_rozcestnik\Mepis_rozcestnik\obj\Debug\net6.0\Mepis_rozcestnik.pdb
 C:\Users\JindaJ\source\repos\Mepis_rozcestnik\Mepis_rozcestnik\obj\Debug\net6.0\Mepis_rozcestnik.genruntimeconfig.cache
 C:\Users\JindaJ\source\repos\Mepis_rozcestnik\Mepis_rozcestnik\obj\Debug\net6.0\ref\Mepis_rozcestnik.dll
-C:\Users\JindaJ\source\repos\Mepis_rozcestnik\Mepis_rozcestnik\bin\Debug\net6.0\Annoucements.json
+C:\Users\JindaJ\source\repos\Mepis_rozcestnik\Mepis_rozcestnik\bin\Debug\net6.0\Annoucements _prod.json
+C:\Users\JindaJ\source\repos\Mepis_rozcestnik\Mepis_rozcestnik\bin\Debug\net6.0\Annoucements_test.json

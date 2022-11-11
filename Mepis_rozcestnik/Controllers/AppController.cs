@@ -8,7 +8,8 @@ namespace Mepis_rozcestnik.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var default_env = "test";
+            return View(announcements_collection.get_announ_by_env(default_env));
         }
 
         public IActionResult process_form()
