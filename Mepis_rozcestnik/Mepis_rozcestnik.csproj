@@ -11,4 +11,6 @@
     <Folder Include="wwwroot\fonts\" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties annoucements_3test_1json__JsonSchema="none" /></VisualStudio></ProjectExtensions>
+
 </Project>

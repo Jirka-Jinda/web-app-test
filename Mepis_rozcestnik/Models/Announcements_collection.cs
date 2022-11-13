@@ -5,20 +5,13 @@ namespace Mepis_rozcestnik.Models
 {
     public class announcements_collection
     {
-        public List<announcements> collection;
-
-        public announcements_collection(List<announcements> lst)
-        {
-            collection = lst;
-        }
-
-        public static announcements_collection get_announ_by_env(string env)
+        public static List<announcements> get_announ_by_env(string env)
         {
             string path = "";
             if (env == "production")
-                path = "~/Annoucements_prod.json";
+                path = "./Announcements_prod.json";
             else if (env == "test")
-                path = "~/Annoucements_test.json";
+                path = "./Annoucements_test.json";
             else
                 throw new Exception();
 
@@ -26,14 +19,25 @@ namespace Mepis_rozcestnik.Models
             {
                 var json_content = File.ReadAllText(path);
                 var res = JsonSerializer.Deserialize<List<announcements>>(json_content);
-                return new announcements_collection(res);
+                return res;
+
+                //var an1 = new announcements(false, "test", DateTime.Now, "content");
+                //var an2 = new announcements(true, "test2", DateTime.Now, "content2");
+                //var rs = new List<announcements>();
+                //rs.Add(an1);
+                //rs.Add(an2);
+
+                //var temp = JsonSerializer.Serialize(rs);
+                //File.WriteAllText(path, temp);
+                //Console.WriteLine(temp);
+                //return rs;
             }
             catch (Exception e)
             {
                 announcements ann = new announcements(true, "Chyba načtení oznámení", DateTime.Now, e.ToString());
                 var res = new List<announcements>();
                 res.Add(ann);
-                return new announcements_collection(res);
+                return res;
             }
         }
     }
@@ -49,7 +53,7 @@ namespace Mepis_rozcestnik.Models
         {
             this.is_warning = is_warning;
             this.header = header;
-            date = date;
+            this.date = date;
             this.content = content;
         }
     }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JindaJ\\source\\repos\\Mepis_rozcestnik\\Mepis_rozcestnik\\Mepis_rozcestnik.csproj": {}
+    "C:\\Users\\jirij\\source\\repos\\web-app-test\\Mepis_rozcestnik\\Mepis_rozcestnik.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JindaJ\\source\\repos\\Mepis_rozcestnik\\Mepis_rozcestnik\\Mepis_rozcestnik.csproj": {
+    "C:\\Users\\jirij\\source\\repos\\web-app-test\\Mepis_rozcestnik\\Mepis_rozcestnik.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JindaJ\\source\\repos\\Mepis_rozcestnik\\Mepis_rozcestnik\\Mepis_rozcestnik.csproj",
+        "projectUniqueName": "C:\\Users\\jirij\\source\\repos\\web-app-test\\Mepis_rozcestnik\\Mepis_rozcestnik.csproj",
         "projectName": "Mepis_rozcestnik",
-        "projectPath": "C:\\Users\\JindaJ\\source\\repos\\Mepis_rozcestnik\\Mepis_rozcestnik\\Mepis_rozcestnik.csproj",
-        "packagesPath": "C:\\Users\\JindaJ\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JindaJ\\source\\repos\\Mepis_rozcestnik\\Mepis_rozcestnik\\obj\\",
+        "projectPath": "C:\\Users\\jirij\\source\\repos\\web-app-test\\Mepis_rozcestnik\\Mepis_rozcestnik.csproj",
+        "packagesPath": "C:\\Users\\jirij\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jirij\\source\\repos\\web-app-test\\Mepis_rozcestnik\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\JindaJ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jirij\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
