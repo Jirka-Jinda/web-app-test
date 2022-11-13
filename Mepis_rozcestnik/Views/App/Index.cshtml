@@ -5,7 +5,7 @@
 @foreach (announcements an in Model)
 {
     var class_name = "";
-    @if (@an.is_warning) 
+    @if (@an.is_warning)
         class_name = "warning-message";
 
     <article class=@class_name>

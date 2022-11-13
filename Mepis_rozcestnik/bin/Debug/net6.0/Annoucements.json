@@ -1,0 +1,14 @@
+[
+  {
+    "is_warning": false,
+    "header": "test",
+    "date": "2022-11-13T10:49:24.1967327+01:00",
+    "content": "content"
+  },
+  {
+    "is_warning": true,
+    "header": "test2",
+    "date": "2022-11-13T10:49:24.1970749+01:00",
+    "content": "content2"
+  }
+]

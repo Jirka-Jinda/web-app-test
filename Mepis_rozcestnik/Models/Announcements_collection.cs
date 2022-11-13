@@ -7,30 +7,20 @@ namespace Mepis_rozcestnik.Models
     {
         public static List<announcements> get_announ_by_env(string env)
         {
-            string path = "";
-            if (env == "production")
-                path = "./Announcements_prod.json";
-            else if (env == "test")
-                path = "./Annoucements_test.json";
-            else
-                throw new Exception();
+            string path = "./Annoucements.json";
+            //string path = "";
+            //if (env == "production")
+            //    path = "./Annoucements_prod.json";
+            //else if (env == "test")
+            //    path = "./Annoucements_test.json";
+            //else
+            //    throw new Exception();
 
             try
             {
                 var json_content = File.ReadAllText(path);
                 var res = JsonSerializer.Deserialize<List<announcements>>(json_content);
-                return res;
-
-                //var an1 = new announcements(false, "test", DateTime.Now, "content");
-                //var an2 = new announcements(true, "test2", DateTime.Now, "content2");
-                //var rs = new List<announcements>();
-                //rs.Add(an1);
-                //rs.Add(an2);
-
-                //var temp = JsonSerializer.Serialize(rs);
-                //File.WriteAllText(path, temp);
-                //Console.WriteLine(temp);
-                //return rs;
+                return res ?? throw new Exception("Nepodarilo se nacist json soubor oznameni");
             }
             catch (Exception e)
             {
